@@ -1,0 +1,244 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="Spring2015StudentWork.css" />
+
+<style>
+.formerStudent {
+    background-color: #ffe6e6;
+}
+</style>
+
+<script >
+// Object constructor
+function learner (semester, firstName, lastName, userName )
+{
+    this.semester = semester;
+	this.firstName = firstName;
+	this.lastName = lastName;
+	this.userName = userName;
+//	this.views = views;
+//	this.updateViews = function() {
+//		return ++this.views;
+//		};
+}
+
+// Array of learner objects.  Array whiten an array.
+// Use same syntax - Last element has no comma! 
+var	learners = [
+	new learner("20180101", "Fatima", "Anjum", "FatimaAnjum"),
+	new learner("20180101", "Joel", "Barragan", "JoelBarragan"),
+	new learner("20180101", "Tony", "Humphrey", "TonyHumphrey"), 
+	new learner("20180101", "Mikey", "Jaffee", "MikeyJaffee"),
+	new learner("20180101", "Robert", "Lindauer", "RobertLindauer"),
+	new learner("20180101", "Matthew", "Marotta", "MatthewMarotta"),
+	new learner("20180101", "Momina", "Nazir", "MominaNazir"),
+	new learner("20180101", "Philomena", "Nesci", "PhilomenaNesci"),
+	new learner("20180101", "Juvenst", "Philemon", "JuvenstPhilemon"),
+	new learner("20180101", "Devonte", "Salmon", "DevonteSalmon"),
+	new learner("20180101", "Aidan", "Aidan", "AidanShugrue"),
+	new learner("20180101", "Richard", "Silva", "RichardSilva"),
+	new learner("20180101", "Jordan", "Valentino", "JordanValentino"),
+	new learner("20180101", "Jack", "Whitney", "JackWhitney"),
+	new learner("20180101", "Xavion", "Zavala", "XavionZavala"),
+];	
+
+//	console.log(learners[1].firstName)
+
+</script >
+
+<style>
+table, td, th {
+    border: 1px solid #0000FF;
+}
+</style>
+<title> Spring 2018 C110 Class List</title>
+</head>
+
+<!-- Start comment area  
+	<td style="color:blue;"><strong> &#10003;</strong></td>	  Check-Mark
+	<td style="color:red;"><strong> &#10033; </strong></td>	   Asterisk symbal		
+     End comment area
+-->
+
+<body >
+<div style="padding:5px;">
+<div style="float: left;  border:5px solid; color:blue; border-radius:15px; padding: 15px">
+<div align="center">
+<h2 style="color:blue; text-decoration:underline;"> CS110 Students' WebPages </h2>
+
+<table id="table01" style="border-spacing: 5px;">
+
+<!-- Print Date using document.write -->
+<canvas id="canvas" width="150em" height="150em" 
+style="background-color:#0000FF">        
+</canvas>     <!-- Establish element with ID called canvas and set background of canvas --> 
+<img id="ClockLogo" width="1em" height="1em"
+src="CarnaImage.jpg" alt="Clock Logo">
+
+ <script>
+// var date = new Date();
+// document.writeln ("Today is: " + date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear() );
+
+var canvas = document.getElementById("canvas");  // Establish document variable called canvas  
+var ctx = canvas.getContext("2d");               // Get 2d method in canvas --> 
+var radius = canvas.height / 2;                  // set radious of clock to be one-half height.  
+ctx.translate(radius, radius);                   // Set orggin position (x,y)  
+radius = radius * 0.90;                          // Reduce the radius to 0.90 of its length to fit properly   
+setInterval(drawClock, 1000);                    // call drawClock function every second (or 1000 milllisecond)  
+
+function drawClock() {							 // drawClock function   
+  drawFace(ctx, radius);						 // call drawFace function  
+  drawNumbers(ctx, radius);						 // call drawNumber function  
+  drawTime(ctx, radius);						 // call drawTime function   
+}
+
+function drawFace(ctx, radius) {				 // drawFace function 
+  var grad;										 // create grad variable
+  ctx.beginPath();								 // begins a path, or resets the current path
+  ctx.arc(0, 0, radius, 0, 2*Math.PI);			 // one of many ways to create a path
+  ctx.fillStyle = 'white';						 // set color of arc (area) created 
+  ctx.fill();									 // fill the area with color 
+// Add image to clock face  
+  var img = document.getElementById("ClockLogo"); // set image variavle 
+  ctx.drawImage(img, -20, -20, 40, 40); // [clipped (x, x, width, height)], image position, [width, height] 
+// ---------------------
+  grad = ctx.createRadialGradient(0,0,radius*0.95, 0,0,radius*1.05);
+  grad.addColorStop(0, '#333');
+  grad.addColorStop(0.5, 'white');
+  grad.addColorStop(1, '#333');
+  ctx.strokeStyle = grad;
+  ctx.lineWidth = radius*0.1;
+  ctx.stroke();
+  ctx.beginPath();
+  ctx.arc(0, 0, radius*0.1, 0, 2*Math.PI);
+  ctx.fillStyle = '#333';
+  ctx.fill(); 
+// Add text to clock face
+  ctx.font = radius*0.012 + "em arial";
+  ctx.fillStyle = '#0000FF'; 
+  ctx.fillText("CCSU CS110", 2, -25); 
+  
+  var tText = 'Spring';
+  var date = new Date();
+  var realMonth = date.getMonth() + 1;  
+  if (realMonth > 8)
+	{tText = 'Fall';}
+  tText = tText + ' ' + date.getFullYear();
+
+  ctx.fillText(tText, 2, 27); 
+//  ctx.fillText("Spring 2020", 2, 27);    
+ }
+
+function drawNumbers(ctx, radius) {
+  var ang;
+  var num;
+  ctx.fillStyle = '#0000FF';
+  ctx.font = radius*0.01 + "em arial";
+  ctx.textBaseline="middle";
+  ctx.textAlign="center";
+  for(num = 1; num < 13; num++){
+    ang = num * Math.PI / 6;
+    ctx.rotate(ang);
+    ctx.translate(0, -radius*0.85);
+    ctx.rotate(-ang);
+    ctx.fillText(num.toString(), 0, 0);
+    ctx.rotate(ang);
+    ctx.translate(0, radius*0.85);
+    ctx.rotate(-ang);
+  }
+}
+
+function drawTime(ctx, radius){
+    var now = new Date();
+    var hour = now.getHours();
+    var minute = now.getMinutes();
+    var second = now.getSeconds();
+    //hour
+    hour=hour%12;
+    hour=(hour*Math.PI/6)+
+    (minute*Math.PI/(6*60))+
+    (second*Math.PI/(360*60));
+    drawHand(ctx, hour, radius*0.5, radius*0.07);
+    //minute
+    minute=(minute*Math.PI/30)+(second*Math.PI/(30*60));
+    drawHand(ctx, minute, radius*0.8, radius*0.07);
+    // second
+    second=(second*Math.PI/30);
+    drawHand(ctx, second, radius*0.9, radius*0.02);
+}
+
+function drawHand(ctx, pos, length, width) {
+    ctx.strokeStyle = "#FF0000"; // set color of line 
+    ctx.beginPath();
+    ctx.lineWidth = width;
+    ctx.lineCap = "round";
+    ctx.moveTo(0,0);
+    ctx.rotate(pos);
+    ctx.lineTo(0, -length);
+    ctx.stroke();
+    ctx.rotate(-pos);
+}
+ </script>
+
+</table>   
+</div>
+</div>
+</div>  
+
+<div align="center">
+<!--
+<img src="http://free.timeanddate.com/clock/i4k9jpk2/n98/szw210/szh210/hoced1c24/cf100/hnce1ead6/fiv0/fas34/fdi72/mqv0/mhc000/mhs3/mhl20/mhw1/mhd84/mmv0/hhs1/hms1/hsc000/hss1" frameborder="0" width="210" height="210">
+
+<br>
+<p  src="http://free.timeanddate.com/clock/i4kmi7fs/n98/fs30/ftb/tt0/ta1/tb4" frameborder="0" width="465" height="71"></p>
+-->
+</div>
+
+<script>
+    var date = new Date();
+	var realMonth = date.getMonth() + 1;
+	var newh1 = document.createElement("h3");
+	var aText = document.createTextNode("Today is: " + realMonth + "/" + date.getDate() + "/" + date.getFullYear() );	
+	newh1.appendChild(aText);	
+	var parentN = document.getElementById("table01").parentNode;
+	var firstN = document.getElementById("table01");	
+	parentN.insertBefore(newh1, firstN);
+	
+var learnersSize = learners.length;
+for (i = 0; i < learnersSize; i++)
+   {
+	var newRow = document.createElement("tr");
+	colList ();	
+	if ((i+ 1) < learnersSize) {
+		i++;
+		colList ();
+		}
+	document.getElementById("table01").appendChild(newRow);
+   }
+   
+function colList ()
+   {
+//	if (learners[i].semester != "20180101")
+	var newCol = document.createElement("td");
+	var newAtag = document.createElement("a");
+	var aText = document.createTextNode(learners[i].firstName + " " + learners[i].lastName);
+	var newHref = document.createAttribute("href");
+	newHref.value ="STUDENTS/" + learners[i].userName + "/index.html";
+	newAtag.setAttributeNode(newHref);	
+	if (learners[i].semester != "20180101") {
+		var newStyle = document.createAttribute("style");
+		newCol.setAttributeNode(newStyle);
+		newCol.className = "formerStudent";
+//		newCol.style.backgroundColor = "red";		
+		}		
+	newAtag.appendChild(aText);
+	newCol.appendChild(newAtag);
+	newRow.appendChild(newCol);
+   }
+	
+</script>
+</body>
+</html>
