@@ -226,7 +226,7 @@ function colList ()
 	var newAtag = document.createElement("a");
 	var aText = document.createTextNode(learners[i].firstName + " " + learners[i].lastName);
 	var newHref = document.createAttribute("href");
-	newHref.value ="STUDENTS/" + learners[i].userName + "/index.html";
+	newHref.value =learners[i].userName + "/index.html";
 	newAtag.setAttributeNode(newHref);	
 	if (learners[i].semester != "20180101") {
 		var newStyle = document.createAttribute("style");
@@ -242,4 +242,5 @@ function colList ()
 </script>
 </body>
 </html>
+
 
