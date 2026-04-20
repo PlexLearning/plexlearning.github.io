@@ -1,0 +1,110 @@
+<DOCTYPE HTML> <!-- Specify the file type  -->
+	<html> <!-- HTML tag header -->
+		<head> <!-- head tag header -->
+			<title> Dynamic Web Page </title>
+			<link rel="stylesheet" href="css/styles.css">			
+		</head> <!-- Ends head tag -->
+		<body> <!-- body tag header -->
+
+			<!-- Introduction to JavaScript. -->
+			<pre>  <!-- Tells the browser to respect all whitespaces and newlines exactly as written. -->
+				<script>  <!-- script tag header. -->
+					var Name = "John Brown" // Varable Name is assigned a value of "John Brown"
+					var x = 5; // Varable x is assigned a value of 5
+					var y = 10; // Varable y is assigned a value of 10
+					var z = x + y;  // Do mathematichal operations using varable with numeric values 
+					// the variable document represents the whole screen. 
+					document.writeln(z); 
+					// write() and writeln() display variable values and exactly what are in quotes. 
+					// writeln() include linefeed by default - when rapped in <pre>; Write() does not. 
+					// Excape key \n forces a carage return. 
+					document.writeln("My brother " + Name + " is " + z + " years old" + "\n"); 
+
+					var date = new Date();
+					var realMonth = date.getMonth() + 1;	
+					document.writeln(realMonth); 					
+					document.writeln("Date is " + realMonth); 
+					var aText = ("Today is: " + realMonth + "/" + date.getDate() + "/" + date.getFullYear() );					
+					document.writeln(aText); 
+
+				</script>
+			</pre>	
+
+			<section01>  
+				<div id="questions">    
+					<p onclick="ans1()">How can I determine if a baby animal is an orphan?</p>
+					<p onclick="ans2()">How can I tell if an animal has rabies?</p>
+					<p onclick="ans3()">I found a baby bird that fell from its nest. Will the parents orphan it if I touch it?</p>
+					<p onclick="ans4()">How can I volunteer?</p>
+				</div>
+            
+				<div id="answer">
+					<h2>Answer:</h2>
+					<p></p>
+				</div>		
+			</section01>	
+		
+		
+			<div style="margin: 20px;">
+				<h1 id="DatexID">  xxxxx </h1>
+			</div>
+
+			<div style="margin-left: 20%;">
+				<clockarea id="DateyID">  yyyyyy </clockarea>
+			</div>
+
+			<div>        
+            <div id="form">
+                
+                <h2>Complete the form below and we will contact you soon.</h2> 
+            
+                <form class="form-grid"><!-- Start Form -->
+                    
+                    <fieldset>
+                        <legend>Contact Information</legend>
+                        <label for="fName">First Name:</label>
+                        <input type="text" name="fName" id="fName">
+
+                        <label for="lName">Last Name:</label>
+                        <input type="text" name="lName" id="lName"> 
+                        
+                        <label for="bName">Name of Business:</label>
+                        <input type="text" name="bName" id="bName">
+                        
+                        <label for="email">Email:</label>
+                        <input type="email" name="email" id="email">
+                        
+                        <label for="phone">Phone:</label>
+                        <input type="tel" name="phone" id="phone">
+                    </fieldset>
+                    
+                    <fieldset>
+                        <legend>Additional Information</legend>
+                        <p>I would like more information about:</p>
+                            
+                        <label for="vol"><input type="radio" name="info" id="vol" value="Volunteering">Volunteering</label>
+
+                        <label for="sponsor"><input type="radio" name="info" id="sponsor" value="Sponsorship Opportunities">Sponsorship Opportunities</label>
+
+                        <label for="wild"><input type="radio" name="info" id="wild" value="Wildlife">Wildlife</label>
+                        
+                        <label for="other"><input type="radio" name="info" id="other" value="Other">Other, please specify below.</label>
+                        
+                        <label for="questions">What questions do you have for us?</label>
+                        <textarea name="questions" id="questions" rows="5" cols="35"></textarea>
+					</fieldset>
+                   <fieldset>
+                        <label for="fullName">Full Name:</label>
+                        <input type="text" name="fullName" id="fullName">
+                        <label for="upDated">UpDated:</label>
+                        <input type="text" name="upDated" id="upDated">			   						
+				   </fieldset>				   
+                   <input type="button" onclick="updateForm()" id="submit" value="Submit" class="btn"> 
+ 
+                </form>          
+            </div>
+			</div>
+
+			<script src="scripts/JavaScript.js"></script>
+		</body> <!-- Ends head tag -->
+	</html>  <!-- Ends HTML tag -->

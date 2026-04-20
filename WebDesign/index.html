@@ -1,0 +1,104 @@
+<DOCTYPE HTML>
+	<html>
+		<head>
+			<title> First Program </title>
+			<link rel="stylesheet" href="css/styles.css">	
+			<style> <!-- Internal style -->
+				body {
+					background-color: pink;
+				}	
+
+					/* Style rules for digital clock */
+					clockarea {
+					font-size: 2.1em;
+					width: 7em;
+					padding: 0.5em;
+					text-align: center;
+					background-color: #ffc3c3;
+					border-radius: 5px;
+					margin: 0 auto;
+				}
+
+				.cat-gif {
+					height: 160px;
+					width: 186px;
+				}
+		
+					/* Hide or Display Decorative Gifs button */
+					#center-btn {
+					text-align: center;
+				}
+		
+				#gifs-btn {
+					width: 10em;
+					padding: 1em;
+					color: #fff;
+					font-weight: 700;
+					background-color: #ff9191;
+					border: none;
+					border-radius: 5px;
+					margin: 20px 0 40px 0;
+					transition: all 0.2s ease;
+				}
+		
+				#gifs-btn:hover {
+					background-color: #ffc3c3;
+				}
+		
+				#gifs-btn:active {
+					background-color: #ff3298;
+				}
+		
+				/* Style rules to position and size gifs inside div */
+				#page-decor {
+					text-align: center;
+					padding: 20px 0;
+					grid-template-columns: auto auto auto;
+					background-image: url(retro-digital-paper-pattern.jpg);
+					background-attachment: fixed;
+					background-size: cover;
+					background-repeat: no-repeat;
+					background-position: top center;
+				}						
+			</style>			
+		</head>
+		<body style="background-color: green";>
+			<p>Chapter 1, Analyze, Correct, Improve<br/> Your name </p>
+			<P>HTML stands for Hyperlink. </p>
+			<p>CS-110 Makes Learning fun.<p>
+			<p>You use presentation software to create HTML pages.</p>
+			<P>HTML9 is the latest version of HTML.</p>
+			<p>HTML is rendered within the desktop of an operating system.</p>
+			<p></p>
+	
+			<div id="center-btn">
+				<clockarea id="DateID"></clockarea>
+			/div>
+			
+			<script>
+				var date = new Date();
+				var realMonth = date.getMonth() + 1;
+				var aText = ("Today is: " + realMonth + "/" + date.getDate() + "/" + date.getFullYear() );	
+				document.getElementById("DateID").innerHTML = aText;
+//				document.writeln(aText); 
+			</script>	
+
+
+			<div id="center-btn">
+				<button onclick="hideGifs()" id="gifs-btn">Hide Gifs</button> 
+			</div>
+
+				<!-- Decorative Gifs -->
+				<div id="page-decor" style="display: grid;">
+					<a href="https://giphy.com/gifs/love-cat-yybzx6pV8N7ziQTaJ0" target="_blank"><img src="https://media4.giphy.com/media/yybzx6pV8N7ziQTaJ0/giphy.gif?cid=790b76115d0b2782dfed0f4f5ae63a24ad02fb8932eac81b&rid=giphy.gif&ct=s" alt="looping animation of blue cat fish swimming" class="cat-gif"></a>
+		
+					<a href="https://tenor.com/view/gir-invazor-zim-invader-dancing-gif-8384421" target="_blank"><img src="images/gir-dancing.gif" alt="looping animation of cartoon dog dancing"></a>
+		
+					<a href = "https://giphy.com/gifs/gfejYZkgqE3OS7MU4rtarget=" target=_blank"><img src = "https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzJpZzM0d3NvdHNudWtwYWg4aHZydDFnc2h0NGw1ZGhpZXN0czh6MSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/gfejYZkgqE3OS7MU4r/giphy.gif"class="cat-gif"></a>
+
+				</div>
+	
+	
+				<script src="script.js"></script>
+		</body>
+	</html>
