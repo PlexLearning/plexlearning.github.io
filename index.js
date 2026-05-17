@@ -93,7 +93,8 @@ function drawFace(ctx, radius) {				 // drawFace function
   var tText = 'Spring';
   var date = new Date();
   var realMonth = date.getMonth() + 1; 
-  tText = tText + ' ' + date.getFullYear();  
+  if (realMonth < 6)  
+	{tText = tText + ' ' + date.getFullYear();}  
   if (realMonth > 5 && realMonth < 9)
 	{tText = 'Summer';
 	tText = tText + ' ' + date.getFullYear();}
